@@ -1,0 +1,67 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+void ArrayUnion(int a[], int n, int b[], int m)
+{
+    set<int> s;
+    int i;
+    for(i=0;i<n;i++){
+        s.insert(a[i]);
+    }
+    for(i=0;i<m;i++){
+        s.insert(b[i]);
+    }
+    cout<<"size of union array is==>  "<<s.size()<<endl;
+    cout<<"union array is: "<<endl;
+    for(auto itr=s.begin(); itr!=s.end();itr++){
+        cout<<*itr<<" ";
+    }
+}
+
+int main()
+{
+    int m,n;
+    cout<<"size of array1";
+    cin>>n;
+    cout<<"size of array2";
+    cin>>m;
+    int a[n], b[m];
+    cout<<"enter array1";
+    for(int i=0;i<n;i++){
+        cin>>a[i];
+    }
+    cout<<"enter array2";
+    for(int i=0;i<m;i++){
+        cin>>b[i];
+    }
+    ArrayUnion(a,n,b,m);
+    return 0;
+}
+
+//without removing duplicates
+/*
+void union(int a[], int n, int b[], int m){
+int i=0, j=0;
+while(i<n && j<m){
+ if(a[i]<b[j]){
+        cout<<a[i];
+        i++;
+ }
+ else if(a[i]>b[j]){
+    cout<<b[j];
+    j++;
+ }
+ else if(a[i]==b[j]){
+    cout<<a[i];
+    i++;
+    j++;
+ }
+}
+while(i<n){
+    cout<<a[i];
+}
+while(j<m){
+    cout<<b[j];
+}
+}
+*/
