@@ -1,0 +1,34 @@
+//maximum times a character is repeated in string
+
+#include<iostream>
+#include<string>
+#include<bits/stdc++.h>
+
+using namespace std;
+
+
+int main()
+{
+    string s;
+    cout<<"enter";
+    getline(cin, s);
+    int freqchar[26];
+    for(int i=0;i<26;i++){
+        freqchar[i]=0;
+    }
+    for(int i=0;i<s.size();i++){
+        freqchar[s[i]-'a']++;
+    }
+    char ans='a';
+    int maxf=0;
+    for(int i=0;i<26;i++){
+
+        if(freqchar[i]>maxf){
+            maxf=freqchar[i];
+            ans=i+'a';
+        }
+    }
+    cout<<"char: "<<ans<<" freq: "<<maxf;
+
+    return 0;
+}
