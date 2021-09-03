@@ -1,0 +1,56 @@
+#include<iostream>
+#include<string>
+#include<bits/stdc++.h>
+using namespace std;
+
+int longestpali(string s)
+{
+    int start=0;
+    int max_l=1;
+    int low, high;
+    int len=s.size();
+    for(int i=1;i<len;i++)
+    {
+        low=i-1;
+        high=i;
+        while(low>=0&&high<len&&s[low]==s[high]){
+            --low;
+            ++high;
+        }
+        ++low;
+        --high;
+        if(s[low]==s[high]&&high-low+1>max_l){
+            max_l=high-low+1;
+            start=low;
+        }
+
+        low=i-1;
+        high=i+1;
+        while(low>=0&&high<len&&s[low]==s[high]){
+            --low;
+            ++high;
+        }
+        ++low;
+        --high;
+        if(s[low]==s[high]&&high-low+1>max_l){
+            max_l=high-low+1;
+            start=low;
+        }
+    }
+    cout<<"longest pallindrome: ";
+    int temp=max_l;
+    while(temp--){
+        cout<<s[start++];
+    }
+    return max_l;
+}
+
+int main()
+{
+    string s;
+    cout<<"enter string: ";
+    cin>>s;
+    cout<<endl<<"length= "<<longestpali(s);
+
+    return 0;
+}
