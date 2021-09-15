@@ -1,0 +1,28 @@
+#include<iostream>
+using namespace std;
+
+void subseq(string s, int n, int index=-1, string curr="")
+{
+    if(index==n){
+        return;
+    }
+    if(!curr.empty()){
+        cout<<curr<<endl;
+    }
+    for(int i=index+1;i<n;i++){
+        curr+=s[i];
+        subseq(s,n,i,curr);
+        //backtracking
+        curr=curr.erase(curr.size()-1);
+    }
+    return;
+}
+
+int main()
+{
+    string s;
+    cout<<"enter string ";
+    cin>>s;
+    subseq(s,s.size());
+    return 0;
+}
